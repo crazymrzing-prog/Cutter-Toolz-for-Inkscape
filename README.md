@@ -25,7 +25,9 @@ Each `.py` file is the extension logic; each matching `.inx` file defines the In
 
 ## Snake Cutz
 
-      <img width="309" height="334" alt="202608073145" src="https://github.com/user-attachments/assets/c009d884-c9fa-4b7b-99fa-e75fd897c676" />   <img width="306" height="332" alt="202608073144" src="https://github.com/user-attachments/assets/c2495aa8-21c5-4420-860f-c186364e2521" />
+<img width="528" height="508.5" alt="202608073161" src="https://github.com/user-attachments/assets/781ce6fe-0ac4-4dc3-b465-f563d5af953d" />         <img width="313" height="330" alt="202608073146" src="https://github.com/user-attachments/assets/8b0966fc-de8c-413b-9a4d-937e0de87fed" />
+
+
 
 Select **one native circle or ellipse** as the cut shape (converted paths, rectangles, and stars are rejected — redraw with the Circle/Ellipse tool if needed). Optionally also select any artwork (image, text, group) to repeat at every position, e.g. a sticker design.
 
