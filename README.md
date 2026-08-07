@@ -25,13 +25,14 @@ Each `.py` file is the extension logic; each matching `.inx` file defines the In
 
 ## Snake Cutz
 
-      <img width="704" height="678" alt="202608073161" src="https://github.com/user-attachments/assets/ddc79b57-3f2f-4c2d-8804-566527364eba" />  <img width="306" height="332" alt="202608073144" src="https://github.com/user-attachments/assets/c2495aa8-21c5-4420-860f-c186364e2521" />
+      <img width="309" height="334" alt="202608073145" src="https://github.com/user-attachments/assets/c009d884-c9fa-4b7b-99fa-e75fd897c676" />   <img width="306" height="332" alt="202608073144" src="https://github.com/user-attachments/assets/c2495aa8-21c5-4420-860f-c186364e2521" />
 
 Select **one native circle or ellipse** as the cut shape (converted paths, rectangles, and stars are rejected — redraw with the Circle/Ellipse tool if needed). Optionally also select any artwork (image, text, group) to repeat at every position, e.g. a sticker design.
 
 - **Build direction:** Horizontal (left to right) or Vertical (top to bottom).
 - **Fill Area:** give a target width/height (mm or inches) and the number of copies per chain, and the number of chains, are worked out automatically.
 - **Multiple chains:** set a gap between parallel chains; optionally join every chain into one continuous cut path with straight connectors, or leave each chain as its own closed path.
+
    <img width="313" height="330" alt="202608073146" src="https://github.com/user-attachments/assets/25bea1cb-15f0-46d1-8c6e-657b38ae0f35" /> <img width="309" height="334" alt="202608073145" src="https://github.com/user-attachments/assets/88644528-344f-4062-a239-5e36ba4c05c0" />
    
 - **Demo mode:** previews the forward pass (red), return pass (blue), and connectors (green) as separate open paths, so you can check alignment before cutting.
@@ -42,26 +43,30 @@ Output is grouped as **"SnakeCutz"** (cut paths) and **"Images"** (duplicated ar
 
 ## Quik Cutz
 
-   <img width="776" height="672" alt="202608073160" src="https://github.com/user-attachments/assets/f9c5b503-d13f-4563-a021-fde4be0aac8a" />  <img width="334" height="336" alt="202608073150" src="https://github.com/user-attachments/assets/8fc01bda-3804-4f1d-9a3b-2010b9412280" />
+   <img width="582" height="504" alt="202608073160" src="https://github.com/user-attachments/assets/f9c5b503-d13f-4563-a021-fde4be0aac8a" />  <img width="334" height="336" alt="202608073150" src="https://github.com/user-attachments/assets/8fc01bda-3804-4f1d-9a3b-2010b9412280" />
 
 Select **one native rectangle or square** as the cut shape (converted paths, circles, and stars are rejected), plus optionally any artwork to repeat in every cell. The grid always builds right and down from your original selection, which becomes the top-left cell.
 
 - **Fill Area:** target width/height (mm or inches); row/column counts are calculated automatically.
 - **Stub / Join options** (pick one):
   1. No stub extensions — plain grid lines.
+  
        <img width="307" height="306" alt="202608073152" src="https://github.com/user-attachments/assets/31bab4ca-95a3-417e-b612-863627e0572d" />
       
   2. Add stub extensions only — each line overshoots its true end slightly, useful for reliable pierce/tie-off points.
+
        <img width="332" height="331" alt="202608073153" src="https://github.com/user-attachments/assets/9b486434-63b8-4c3c-88f4-b613dd73ae8d" />
 
   3. Add stubs + join with connectors — every horizontal divider becomes one path, every vertical divider becomes one path, with filleted corners at the joins.
+ 
        <img width="332" height="333" alt="202608073154" src="https://github.com/user-attachments/assets/2b3de9ef-bd63-47bf-a297-1053079ae040" />
 
   4. Add stubs + connectors + join path one to path two — as above, plus the horizontal and vertical paths are joined into one, with a sharp right-angle corner.
-      <img width="331" height="336" alt="202608073159" src="https://github.com/user-attachments/assets/7a3e17f0-0f09-4268-ae58-3ba61f82453b" />
+       <img width="331" height="336" alt="202608073159" src="https://github.com/user-attachments/assets/7a3e17f0-0f09-4268-ae58-3ba61f82453b" />
   
-  5. Add stubs + border frame — traces a border rectangle around the whole grid in addition to the two paths.
-      <img width="330" height="338" alt="202608073158" src="https://github.com/user-attachments/assets/356f2a77-458e-4411-bd33-1bb30e63841f" />
+  6. Add stubs + border frame — traces a border rectangle around the whole grid in addition to the two paths.
+  
+       <img width="330" height="338" alt="202608073158" src="https://github.com/user-attachments/assets/356f2a77-458e-4411-bd33-1bb30e63841f" />
 
 - **Demo mode:** previews path one/horizontal (red), path two/vertical (blue), and the border or join (green).
 - **Rasterize duplicated artwork** and **Keep originals** work the same as in Snake Cutz.
