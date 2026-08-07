@@ -2,6 +2,10 @@ I'm not a coder — much of this was created using AI.
 
 # Cutter Toolz — Inkscape Extensions
 
+  <a href="https://github.com/crazymrzing-prog/Cutter-Toolz-for-Inkscape/archive/refs/heads/main.zip">
+    <img src="https://img.shields.io/badge/DOWNLOAD-blue?style=for-the-badge&logo=download&logoColor=white" alt="Download">
+  </a>
+
 Two Inkscape 1.x extensions for laying out repeating cut lines (circles/ellipses or rectangles) to fill a target area, for laser cutters, vinyl cutters, sticker sheets, and similar. Both show up in Inkscape under **Extensions > Cutter Toolz**.
 
 
