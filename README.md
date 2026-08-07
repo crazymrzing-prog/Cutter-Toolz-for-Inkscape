@@ -25,7 +25,8 @@ Each `.py` file is the extension logic; each matching `.inx` file defines the In
 
 ## Snake Cutz
 
-<img width="528" height="508.5" alt="202608073161" src="https://github.com/user-attachments/assets/781ce6fe-0ac4-4dc3-b465-f563d5af953d" />         <img width="313" height="330" alt="202608073146" src="https://github.com/user-attachments/assets/8b0966fc-de8c-413b-9a4d-937e0de87fed" />
+<img width="528" height="508.5" alt="202608073161" src="https://github.com/user-attachments/assets/781ce6fe-0ac4-4dc3-b465-f563d5af953d" />         <img width="306" height="332" alt="202608073144" src="https://github.com/user-attachments/assets/1382e1ab-4ec0-4d07-aa06-f9ab5a080139" />
+
 
 
 
