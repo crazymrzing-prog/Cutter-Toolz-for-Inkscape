@@ -33,7 +33,7 @@ Select **one native circle or ellipse** as the cut shape (converted paths, recta
 - **Fill Area:** give a target width/height (mm or inches) and the number of copies per chain, and the number of chains, are worked out automatically.
 - **Multiple chains:** set a gap between parallel chains; optionally join every chain into one continuous cut path with straight connectors, or leave each chain as its own closed path.
 
-   <img width="313" height="330" alt="202608073146" src="https://github.com/user-attachments/assets/25bea1cb-15f0-46d1-8c6e-657b38ae0f35" /> <img width="309" height="334" alt="202608073145" src="https://github.com/user-attachments/assets/88644528-344f-4062-a239-5e36ba4c05c0" />
+   <img width="313" height="330" alt="202608073146" src="https://github.com/user-attachments/assets/25bea1cb-15f0-46d1-8c6e-657b38ae0f35" />      <img width="309" height="334" alt="202608073145" src="https://github.com/user-attachments/assets/88644528-344f-4062-a239-5e36ba4c05c0" />
    
 - **Demo mode:** previews the forward pass (red), return pass (blue), and connectors (green) as separate open paths, so you can check alignment before cutting.
 - **Rasterize duplicated artwork:** flattens all the duplicated artwork into a single embedded PNG (requires the Inkscape command-line renderer).
@@ -43,7 +43,7 @@ Output is grouped as **"SnakeCutz"** (cut paths) and **"Images"** (duplicated ar
 
 ## Quik Cutz
 
-   <img width="582" height="504" alt="202608073160" src="https://github.com/user-attachments/assets/f9c5b503-d13f-4563-a021-fde4be0aac8a" />  <img width="334" height="336" alt="202608073150" src="https://github.com/user-attachments/assets/8fc01bda-3804-4f1d-9a3b-2010b9412280" />
+   <img width="582" height="504" alt="202608073160" src="https://github.com/user-attachments/assets/f9c5b503-d13f-4563-a021-fde4be0aac8a" />    <img width="334" height="336" alt="202608073150" src="https://github.com/user-attachments/assets/8fc01bda-3804-4f1d-9a3b-2010b9412280" />
 
 Select **one native rectangle or square** as the cut shape (converted paths, circles, and stars are rejected), plus optionally any artwork to repeat in every cell. The grid always builds right and down from your original selection, which becomes the top-left cell.
 
@@ -62,9 +62,10 @@ Select **one native rectangle or square** as the cut shape (converted paths, cir
        <img width="332" height="333" alt="202608073154" src="https://github.com/user-attachments/assets/2b3de9ef-bd63-47bf-a297-1053079ae040" />
 
   4. Add stubs + connectors + join path one to path two — as above, plus the horizontal and vertical paths are joined into one, with a sharp right-angle corner.
+
        <img width="331" height="336" alt="202608073159" src="https://github.com/user-attachments/assets/7a3e17f0-0f09-4268-ae58-3ba61f82453b" />
   
-  6. Add stubs + border frame — traces a border rectangle around the whole grid in addition to the two paths.
+  5. Add stubs + border frame — traces a border rectangle around the whole grid in addition to the two paths.
   
        <img width="330" height="338" alt="202608073158" src="https://github.com/user-attachments/assets/356f2a77-458e-4411-bd33-1bb30e63841f" />
 
