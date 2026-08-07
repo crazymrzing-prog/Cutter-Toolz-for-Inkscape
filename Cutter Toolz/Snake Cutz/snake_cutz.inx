@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <name>Snake Cutz</name>
+  <id>org.yourbuddy.snake_cutz</id>
+
+       <param name="active_tab" type="notebook">
+
+    <page name="options" gui-text="Options">
+    
+      <hbox>
+      
+          <param name="direction" type="optiongroup" appearance="radio" gui-text="Build direction:">
+            <option value="horizontal">Horizontal (build left to right)</option>
+            <option value="vertical">Vertical (build top to bottom)</option>
+          </param>
+          
+      </hbox> 
+
+      <hbox>
+
+        <vbox>
+
+            <label appearance="header">Fill Area</label>
+            <param name="fill_width" type="float" min="0.1" max="100000" precision="3" gui-text="Fill area width">100.0</param>
+            <param name="fill_height" type="float" min="0.1" max="100000" precision="3" gui-text="Fill area height">100.0</param>
+
+        </vbox>
+          <spacer/><spacer/><spacer/>
+          <separator/>
+          <spacer/><spacer/><spacer/>        
+        <vbox>
+            <spacer/><spacer/><spacer/>
+          <param name="units" type="optiongroup" appearance="radio" gui-text="Fill area units:">
+            <option value="mmetres">mm</option>
+            <option value="inches">Inches</option>
+          </param>
+        
+        </vbox>
+
+      </hbox>
+      
+      <hbox>
+      
+        <vbox>
+              <param name="chain_gap" type="float" min="-1000" max="1000" precision="3" gui-text="Gap between chains (mm):">0.0</param>
+              
+        </vbox>      
+              
+      </hbox>        
+      
+      <hbox>
+      
+         <vbox>
+              <param name="add_connectors" type="bool" gui-text="Connect chains with a straight line (single continuous path)">true</param>
+              <param name="rasterize_images" type="bool" gui-text="Rasterize duplicated artwork into a single image (flattens all copies into one embedded PNG)">false</param>
+
+              <param name="keep_originals" type="bool" gui-text="Keep original object(s) (cut shape + artwork/images, untouched)">false</param>
+              <param name="test_mode" type="bool" gui-text="Demo mode: forward=red, return=blue, connectors=green (open paths, for checking alignment)">false</param>
+        </vbox>
+        
+      </hbox>        
+            
+
+    <hbox>
+
+    
+       <vbox>
+
+        <label></label>
+        <label>Select ONE native circle or ellipse as the cut line. </label> 
+        <label>(other shapes will be rejected with an error).</label>
+        <label>Optionally also select any artwork (image/text/raster)</label>
+        <label>that should repeat with each copy - e.g. a sticker design.</label>
+        <label>Generated cutlines are grouped as "SnakeCutz" (paths SnakeCutz_1, SnakeCutz_2, ...).</label>
+        <label>Duplicated artwork/images are grouped as "Images" (Image_1, Image_2, ...).</label>
+        
+       </vbox>
+        
+    </hbox>
+      
+    </page>
+
+    <page name="help" gui-text="Help (1/2)">
+      <label appearance="header">Snake Cutz - how it works</label>
+      <label>Select ONE native circle or ellipse as the cut line. Anything else (rectangle, star, converted path) is rejected - convert or redraw it as a true circle/ellipse first.</label>
+      <label>Optionally also select artwork (image, text, or a group) alongside the cut shape. It will be duplicated at every position in the chain, so a sticker design - including raster images - repeats automatically.</label>
+      <label appearance="header">Fill Area</label>
+      <label>Give a target width and height, in mm or inches (pick with the Fill area units switch - default mm); the copy-per-chain and chain counts are calculated automatically so the layout fills that area as closely as possible without exceeding it. This units switch only affects the Fill Area width/height - everything else (e.g. Gap between chains) is always in mm.</label>
+      <label appearance="header">Build direction</label>
+      <label>Horizontal builds the chain left to right. Vertical builds it top to bottom. Each circle's pole touches the next circle's pole so they sit tangent with no gaps.</label>
+      <label appearance="header">Multiple chains</label>
+      <label>The chain count is derived from the Fill Area height/width (whichever runs perpendicular to the build direction) and the "Gap between chains" value (in mm) - each chain is offset from the next by the shape's own diameter plus that gap. Turn on "Connect chains" to join them into a single continuous cut path with one pen-down/pen-up; leave it off to keep each chain as its own separate closed path.</label>
+    </page>
+
+    <page name="help2" gui-text="Help (2/2)">
+      <label appearance="header">Rasterize duplicated artwork</label>
+      <label>When on, all the duplicated artwork copies (the whole "Images" group) are flattened into a single embedded PNG image instead of staying as separate objects. Useful for shrinking file size or simplifying the result once you're happy with the layout. Requires the Inkscape command-line renderer to be available.</label>
+      <label appearance="header">Grouping</label>
+      <label>All generated cutlines are placed in a group named "SnakeCutz", with each path named SnakeCutz_1, SnakeCutz_2, and so on. All duplicated artwork/images are placed in a separate group named "Images", with each copy named Image_1, Image_2, and so on (unless "Rasterize duplicated artwork" flattens them into one image).</label>
+      <label appearance="header">Keep original object(s)</label>
+      <label>Off (default): the original cut shape is removed once the chain is generated, and the original artwork you selected becomes part of the "Images" group (as its first copy) rather than being duplicated a second time. On: the original cut shape and every originally selected artwork/image are left exactly where they are, untouched - the new SnakeCutz and Images groups are generated as entirely separate, additional objects.</label>
+      <label appearance="header">Demo mode</label>
+      <label>Turns on a preview pass instead of the real cut line: the forward pass is drawn in red, the return pass in blue, and any connectors in green, all as separate open paths inside the "SnakeCutz" group. Use this to check alignment before committing to a real cut.</label>
+    </page>
+
+  </param>
+
+  <effect>
+    <object-type>all</object-type>
+    <effects-menu>
+      <submenu name="Cutter Toolz"/>
+    </effects-menu>
+  </effect>
+
+  <script>
+    <command location="inx" interpreter="python">snake_cutz.py</command>
+  </script>
+</inkscape-extension>

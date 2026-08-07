@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <name>Quik Cutz</name>
+  <id>org.yourbuddy.quik_cutz_grid</id>
+
+  <param name="tab" type="notebook">
+
+    <page name="options" gui-text="Options">
+
+      <label appearance="header">Fill Area</label>
+      <hbox>
+        <vbox>
+          <param name="fill_width" type="float" min="0.1" max="100000" precision="3" gui-text="Fill area width:">100.0</param>
+          <param name="fill_height" type="float" min="0.1" max="100000" precision="3" gui-text="Fill area height:">100.0</param>
+        </vbox>
+
+          <spacer/><spacer/><spacer/>
+          <separator/>
+          <spacer/><spacer/><spacer/>
+
+        <vbox>
+            <spacer/><spacer/><spacer/>        
+        
+          <param name="units" type="optiongroup" appearance="radio" gui-text="Fill area units:">
+            <option value="mmetres">mm</option>
+            <option value="inches">Inches</option>
+          </param>
+        </vbox>
+      </hbox>
+
+      <hbox>
+        <vbox>
+          <label appearance="header">Stub / Join Options</label>
+          <param name="layout_option" type="optiongroup" appearance="radio" gui-text="">
+            <option value="opt1">1. No stub extensions</option>
+            <option value="opt2">2. Add stub extensions only</option>
+            <option value="opt3">3. Add stubs + join with connectors</option>
+            <option value="opt4">4. Add stubs + connectors + join path one to path two (right-angle corner)</option>
+            <option value="opt5">5. Add stubs + border frame around grid and stubs</option>
+          </param>
+        </vbox>
+        <vbox>
+          <label appearance="header">Stub Settings</label>
+          <param name="extension_length" type="float" min="0" max="10" precision="3" gui-text="Stub length (mm):">5.0</param>
+        </vbox>
+      </hbox>
+
+      <param name="rasterize_images" type="bool" gui-text="Rasterize all duplicated artwork into a single image">false</param>
+
+      <param name="keep_originals" type="bool" gui-text="Keep original object(s) (cut shape + artwork/images, untouched)">false</param>
+      <param name="test_mode" type="bool" gui-text="Demo mode: path one (horizontal)=red, path two (vertical)=blue, outer box=green">false</param>
+
+      <label></label>
+      <label>See the Help tabs for details on each option.</label>
+
+    </page>
+
+    <page name="help1" gui-text="Help - Basics">
+
+      <label appearance="header">What this does</label>
+      <label>Starts from a single sticker (a native rectangle cut line, usually with artwork placed on top and selected alongside it) and tiles it into a grid sized to fill a target width x height (mm or inches - see Fill Area units) - the column/row counts are worked out automatically from the cut shape's own size. It draws every horizontal and vertical boundary line of the grid - including the sheet's outer edges, not just the internal dividers - as two alternating snake paths: one for all horizontal cuts, one for all vertical cuts.</label>
+
+      <label appearance="header">Fill Area</label>
+      <label>Give a target width and height, in mm or inches (pick with the Fill area units switch - default mm); the column/row counts are calculated automatically so the grid fills that area as closely as possible without exceeding it. This units switch only affects the Fill Area width/height - everything else (e.g. Stub length) is always in mm.</label>
+
+      <label appearance="header">What to select</label>
+      <label>Select exactly ONE native rectangle or square as the cut line, plus (optionally) any artwork - raster image, text, group, etc. - that should repeat in every cell. Converted paths, circles, or stars are not accepted as the cut shape; it must be a true rectangle.</label>
+
+      <label appearance="header">Build direction</label>
+      <label>The grid always builds to the right and down from the original selection, which stays in place as the top-left cell. The combined path always starts at that same top-left corner, since it's the one corner that never moves as copies are added.</label>
+
+    </page>
+
+    <page name="help2" gui-text="Help - Output">
+
+      <label appearance="header">Grouped output</label>
+      <label>Generated cutlines are placed in a group named "QuikCutz" (paths QuikCutz_1, QuikCutz_2, ...). Duplicated artwork/images are placed in a separate group named "Images" (Image_1, Image_2, ...).</label>
+
+      <label appearance="header">Snake direction (fixed, not configurable)</label>
+      <label>Each internal horizontal divider alternates direction from the one above it: the first (topmost) runs left to right, the next right to left, and so on. Each internal vertical divider alternates from the one to its left: the first (leftmost) runs bottom to top, the next top to bottom, and so on.</label>
+
+      <label appearance="header">Stub / Join Options (choose one)</label>
+      <label>1. No stub extensions: plain grid lines, path one and path two stay as separate unjoined runs, no border.
+2. Add stub extensions only: a short straight stub is added past each line's true start/end (length set on the right, default 5mm) so the cut slightly overshoots the grid edge - useful for reliable pierce or tie-off points. Stubs stay unjoined.
+3. Add stubs + join with connectors: straight segments join the end of one line to the matching end of the next line in that direction's sequence, so every horizontal divider becomes ONE path and every vertical divider becomes ONE path (path one and path two stay two separate path objects; they are not bridged together). Every corner a connector introduces is automatically rounded with a circular fillet (radius 0.9x the stub length, clamped so it never exceeds the stub length or half the connector's own length).
+4. Add stubs + connectors + join path one to path two: everything option 3 does, plus path one's end is joined directly to path two's start with a straight segment, combining them into ONE path with a square (sharp, never filleted) right-angle corner at that one joint.
+5. Add stubs + border frame: a rectangle is traced around the array, sitting at the stub-tip extent, in addition to path one and path two (three path objects total: path one, path two, border).
+These are mutually exclusive - only one can be active at a time.</label>
+
+    </page>
+
+    <page name="help3" gui-text="Help - Options">
+
+      <label appearance="header">Stub length</label>
+      <label>Sets how far each stub overshoots the true line end (mm). Only takes visible effect on options 2-5; ignored on option 1.</label>
+
+      <label appearance="header">Rasterize duplicated artwork</label>
+      <label>When on, every duplicated artwork element in the "Images" group is flattened into ONE embedded PNG image after the grid is built, instead of staying as separate objects - useful for keeping the file lightweight, or for laser/print workflows that expect a single flattened image. Requires the Inkscape command-line export to run in the background, so it may take a moment on larger grids.</label>
+
+      <label appearance="header">Keep original object(s)</label>
+      <label>Off (default): the original cut rectangle is removed once the grid is built, and the original artwork you selected becomes part of the "Images" group (as its first copy) rather than being duplicated a second time. On: the original cut rectangle and every originally selected artwork/image are left exactly where they are, untouched - the new QuikCutz and Images groups are generated as entirely separate, additional objects.</label>
+
+      <label appearance="header">Demo mode</label>
+      <label>Colors path one (horizontal cuts) red, path two (vertical cuts) blue, and the outer box or H-to-V bracket join green, purely to make the logic easy to check visually before cutting.</label>
+
+    </page>
+
+  </param>
+
+  <effect>
+    <object-type>all</object-type>
+    <effects-menu>
+      <submenu name="Cutter Toolz"/>
+    </effects-menu>
+  </effect>
+
+  <script>
+    <command location="inx" interpreter="python">quik_cutz_grid.py</command>
+  </script>
+</inkscape-extension>

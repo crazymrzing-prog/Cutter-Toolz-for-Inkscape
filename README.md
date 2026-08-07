@@ -1,2 +1,62 @@
-# Cutter-Toolz-for-Inkscape
-Two Inkscape 1.x extensions for laying out repeating cut lines (circles/ellipses or rectangles) to fill a target area, for laser cutters, vinyl cutters, sticker sheets, and similar. Both show up in Inkscape under Extensions > Cutter Toolz.
+I'm not a coder — much of this was created using AI.
+
+# Cutter Toolz — Inkscape Extensions
+
+Two Inkscape 1.x extensions for laying out repeating cut lines (circles/ellipses or rectangles) to fill a target area, for laser cutters, vinyl cutters, sticker sheets, and similar. Both show up in Inkscape under **Extensions > Cutter Toolz**.
+
+## What's in this repo
+
+| File | Extension | Purpose |
+|---|---|---|
+| `snake_cutz.inx` / `snake_cutz.py` | **Snake Cutz** | Chains a circle or ellipse into one or more tangent "snake" rows/columns to fill an area. |
+| `quik_cutz_grid.inx` / `quik_cutz_grid.py` | **Quik Cutz** | Tiles a rectangle into a grid of cells to fill an area, drawing all the row/column dividers as two continuous snake-style paths. |
+
+Each `.py` file is the extension logic; each matching `.inx` file defines the Inkscape UI (menus, options, help tabs) for it. They must stay paired and both be installed together.
+
+## Installation
+
+1. Copy all four files into your Inkscape user extensions folder:
+   - **Windows:** `%APPDATA%\inkscape\extensions\`
+   - **macOS:** `~/Library/Application Support/org.inkscape.Inkscape/config/inkscape/extensions/`
+   - **Linux:** `~/.config/inkscape/extensions/`
+2. Restart Inkscape.
+3. Find them under **Extensions > Cutter Toolz > Snake Cutz** / **Quik Cutz**.
+
+## Snake Cutz
+
+Select **one native circle or ellipse** as the cut shape (converted paths, rectangles, and stars are rejected — redraw with the Circle/Ellipse tool if needed). Optionally also select any artwork (image, text, group) to repeat at every position, e.g. a sticker design.
+
+- **Build direction:** Horizontal (left to right) or Vertical (top to bottom).
+- **Fill Area:** give a target width/height (mm or inches) and the number of copies per chain, and the number of chains, are worked out automatically.
+- **Multiple chains:** set a gap between parallel chains; optionally join every chain into one continuous cut path with straight connectors, or leave each chain as its own closed path.
+- **Demo mode:** previews the forward pass (red), return pass (blue), and connectors (green) as separate open paths, so you can check alignment before cutting.
+- **Rasterize duplicated artwork:** flattens all the duplicated artwork into a single embedded PNG (requires the Inkscape command-line renderer).
+- **Keep originals:** leaves your original shape/artwork untouched instead of consuming it into the result.
+
+Output is grouped as **"SnakeCutz"** (cut paths) and **"Images"** (duplicated artwork).
+
+## Quik Cutz
+
+Select **one native rectangle or square** as the cut shape (converted paths, circles, and stars are rejected), plus optionally any artwork to repeat in every cell. The grid always builds right and down from your original selection, which becomes the top-left cell.
+
+- **Fill Area:** target width/height (mm or inches); row/column counts are calculated automatically.
+- **Stub / Join options** (pick one):
+  1. No stub extensions — plain grid lines.
+  2. Add stub extensions only — each line overshoots its true end slightly, useful for reliable pierce/tie-off points.
+  3. Add stubs + join with connectors — every horizontal divider becomes one path, every vertical divider becomes one path, with filleted corners at the joins.
+  4. Add stubs + connectors + join path one to path two — as above, plus the horizontal and vertical paths are joined into one, with a sharp right-angle corner.
+  5. Add stubs + border frame — traces a border rectangle around the whole grid in addition to the two paths.
+- **Demo mode:** previews path one/horizontal (red), path two/vertical (blue), and the border or join (green).
+- **Rasterize duplicated artwork** and **Keep originals** work the same as in Snake Cutz.
+
+Output is grouped as **"QuikCutz"** (cut paths) and **"Images"** (duplicated artwork).
+
+## Requirements
+
+- Inkscape 1.x (uses the `inkex` Python API and `inkscape.command` module).
+- The "Rasterize duplicated artwork" option in either extension needs Inkscape's command-line renderer available on your system.
+
+## Notes
+
+- Both extensions strictly require a **native** shape (circle/ellipse for Snake Cutz, rectangle for Quik Cutz) as the cut line — if you've used "Path > Object to Path" on it, undo that or redraw the shape.
+- Full in-app help is available on the Help tabs of each extension's dialog.
